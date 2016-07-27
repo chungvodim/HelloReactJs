@@ -3,19 +3,41 @@
   { Author: "Pete Hunt", Text: "This is one comment" },
   { Author: "Jordan Walke", Text: "This is *another* comment" }
 ];
-
+//<CommentList data={this.props.data} />
+// this.props are immutable. They are passed from the parent and are "owned" by the parent.
+// this.state is private to the component and can be changed by calling this.setState()
 var CommentBox = React.createClass({
+    loadCommentsFromServer: function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', this.props.myUrl, true);
+        xhr.onload = function () {
+            var data = JSON.parse(xhr.responseText);
+            this.setState({ data: data });
+        }.bind(this);
+        xhr.send();
+    },
+    getInitialState: function () {
+        return { data: [] };
+    },
     displayName: 'CommentBox',
+    componentWillMount: function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', this.props.myUrl, true);
+        xhr.onload = function () {
+            var data = JSON.parse(xhr.responseText);
+            this.setState({ data: data });
+        }.bind(this);
+        xhr.send();
+    },
     render: function() {
         return (
           <div className="commentBox">
             <h1>Comments</h1>
-            <CommentList data={this.props.data} />
+            <CommentList data={this.state.data} />
             <CommentForm />
           </div>
         );
     },
-    /*equivalent*/
     //render: function () {
     //    return (
     //      React.createElement('div', { className: "commentBox" },"Hello, world! I am a CommentBox."
@@ -67,7 +89,16 @@ var Comment = React.createClass({
     }
 });
 
-ReactDOM.render(<CommentBox data={data} />,document.getElementById('content'));
+//ReactDOM.render(
+//    <CommentBox data={data } />,
+//    document.getElementById('content')
+//);
+
+ReactDOM.render(
+    <CommentBox myUrl="/comments" pollInterval={2000} />,
+    document.getElementById('content')
+);
+
 /*equivalent*/
 //ReactDOM.render(
 //  React.createElement(CommentBox, null),
