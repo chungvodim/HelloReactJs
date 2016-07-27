@@ -20,14 +20,19 @@ var CommentBox = React.createClass({
         return { data: [] };
     },
     displayName: 'CommentBox',
-    componentWillMount: function () {
-        var xhr = new XMLHttpRequest();
-        xhr.open('get', this.props.myUrl, true);
-        xhr.onload = function () {
-            var data = JSON.parse(xhr.responseText);
-            this.setState({ data: data });
-        }.bind(this);
-        xhr.send();
+    // componentWillMount() loads the data from our XMLHttpRequest and assigns it to the data variable.Finally, it sets the data variable in state, using setState().
+    //componentWillMount: function () {
+    //    var xhr = new XMLHttpRequest();
+    //    xhr.open('get', this.props.url, true);
+    //    xhr.onload = function () {
+    //        var data = JSON.parse(xhr.responseText);
+    //        this.setState({ data: data });
+    //    }.bind(this);
+    //    xhr.send();
+    //},
+    componentDidMount: function () {
+        this.loadCommentsFromServer();
+        window.setInterval(this.loadCommentsFromServer, this.props.pollInterval);
     },
     render: function() {
         return (
