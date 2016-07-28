@@ -36,7 +36,8 @@ var CommentBox = React.createClass({
         xhr.send(data);
     },
     getInitialState: function () {
-        return { data: [] };
+        //return { data: [] };
+        return { data: this.props.initialData };
     },
     displayName: 'CommentBox',
     // componentWillMount() loads the data from our XMLHttpRequest and assigns it to the data variable.Finally, it sets the data variable in state, using setState().
@@ -50,7 +51,8 @@ var CommentBox = React.createClass({
     //    xhr.send();
     //},
     componentDidMount: function () {
-        this.loadCommentsFromServer();
+        // Server-side rendering
+        //this.loadCommentsFromServer();
         window.setInterval(this.loadCommentsFromServer, this.props.pollInterval);
     },
     render: function() {
@@ -131,17 +133,17 @@ var Comment = React.createClass({
     }
 });
 
+// Client-side rendering
+//ReactDOM.render(
+//    <CommentBox url="/comments" submitUrl="/comments/new" pollInterval={2000} />,
+//    document.getElementById('content')
+//);
+
 //ReactDOM.render(
 //    <CommentBox data={data } />,
 //    document.getElementById('content')
 //);
 
-ReactDOM.render(
-    <CommentBox url="/comments" submitUrl="/comments/new" pollInterval={2000} />,
-    document.getElementById('content')
-);
-
-/*equivalent*/
 //ReactDOM.render(
 //  React.createElement(CommentBox, null),
 //  document.getElementById('content')

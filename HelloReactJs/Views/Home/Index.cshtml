@@ -1,4 +1,6 @@
-﻿@{
+﻿@*@using System.Web.Optimization.React;*@
+@model IEnumerable<HelloReactJs.Models.CommentModel>
+@{
     Layout = null;
 }
 <html>
@@ -7,9 +9,19 @@
 </head>
 <body>
     <div id="content"></div>
+    @*Server-side rendering*@
+    @Html.React("CommentBox", new
+    {
+        initialData = Model,
+        url = Url.Action("Comments"),
+        submitUrl = Url.Action("AddComment"),
+        pollInterval = 2000,
+    })
     <script src="https://fb.me/react-15.0.1.js"></script>
     <script src="https://fb.me/react-dom-15.0.1.js"></script>
-    <script src="@Url.Content("~/Scripts/showdown.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/Tutorial.jsx")"></script>
+    @*@Scripts.Render("~/bundles/main")*@
+    @*<script src="@Url.Content("~/Scripts/showdown.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/Tutorial.jsx")"></script>*@
+    @Html.ReactInitJavaScript()
 </body>
 </html>

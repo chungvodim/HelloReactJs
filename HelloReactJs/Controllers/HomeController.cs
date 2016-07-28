@@ -34,7 +34,8 @@ namespace HelloReactJs.Controllers
         }
         public ActionResult Index()
         {
-            return View();
+            //return View();
+            return View(_comments);
         }
         // Improving Performance with Output Caching. The output is cached for 10 seconds.
         // Content is cached in three locations: the web server, any proxy servers, and the web browser
