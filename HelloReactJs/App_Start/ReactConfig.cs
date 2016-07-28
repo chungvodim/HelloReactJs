@@ -4,9 +4,10 @@ using React;
 
 namespace HelloReactJs
 {
-	public static class ReactConfig
+    // modify App_Start\ReactConfig.cs to tell ReactJS.NET which JavaScript files it requires for the server-side rendering
+    public static class ReactConfig
 	{
-		public static void Configure()
+        public static void Configure()
 		{
             // If you want to use server-side rendering of React components, 
             // add all the necessary JavaScript files here. This includes 
