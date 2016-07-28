@@ -49,6 +49,13 @@ namespace HelloReactJs.Controllers
             return Json(_comments, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
+        public ActionResult AddComment(CommentModel comment)
+        {
+            _comments.Add(comment);
+            return Content("Success :)");
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

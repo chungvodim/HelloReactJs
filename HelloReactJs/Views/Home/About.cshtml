@@ -1,7 +1,36 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<div class="jumbotron">
+    <h1>REACT.JS</h1>
+    <p>
+        React.js là một thư viện sinh ra để xây dựng giao diện người dùng (UI). Nó không phải là Framework mà chỉ là thư viện, do đó trong MVC nó sẽ tương ứng với phần V.<br />
+        React.js là thư viện phục vụ cho mục đích đó : dễ dàng quản lí khi quy mô mở rộng. Hay ngược lại, nó không dành cho những ứng dụng nhỏ cần hoàn thành sớm.<br />
+        Đặc tính của React.js là khiến các component luôn ở trạng thái stateless một cách nhiều nhất có thể, khiến ta dễ dàng quản lí chúng.<br />
+        Các component nhận data từ lớp mẹ và dựa vào đó để xây dựng View. Điểm mấu chốt ở đây là bản thân các component không mang một trạng thái nào. Nó chỉ có việc xuất ra hiển thị dựa vào những đầu vào từ bên ngoài (thường là từ component mẹ). Do đó những component đó sẽ dễ quản lí, dễ test và dễ tái sử dụng.<br />
+        <img src="https://viblo.asia/uploads/images/3a64d4330912bf3ebb7cd6708adab3af76633072/c3cbd2731b4e5efa679137bce7d2ab318c617916.png" />
+    </p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Đây là những lý do tại sao bạn nên sử dụng React:</h2>
+        <p>React.js, như ở trên đã bàn, là thư viện thích hợp cho những ứng dụng cần mở rộng, quy mô lớn chứ không dành cho những ứng dụng nhỏ cần hoàn thành sớm. Đối với những ứng dụng nhỏ đó, Angular.js hay Vue.js thường thích hợp hơn, còn đối với những trang tĩnh chỉ có 1 chút UI thì chỉ cần sử dụng jQuery có lẽ cũng đủ rồi.</p>
+        <p>Khi tự tay dùng React.js và Flux để viết 1 Application bạn sẽ hiểu : việc liên tục phải kết nối những stateless component là khá vất vả. Nhưng sự vất vả đó sẽ được đền đáp bằng 1 ứng dụng rất bền, đẹp và dễ maintain.</p>
+        <p>Code UI dễ đọc và bảo trì</p>
+        <p>Component hóa UI là tương lai của phát triển web. Html và javascript được đóng gói trong cùng 1 component nên dễ dàng cho việc quản lý và reuse</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Đây là những lý do tại sao bạn nên nghĩ kỹ trước khi chuyển sang React:</h2>
+        <p>Bạn sẽ cần thời gian ban đầu để làm quen với React như tìm hiểu về: props, state và component communication, chúng không đơn giản trong khi đó tài liệu thì sơ sài</p>
+        <p>React không hỗ trợ bất cứ trình duyệt nào có version thấp hơn IE8, và sẽ không bao giờ</p>
+        <p>Nếu ứng dụng của bạn không có nhiều page động, bạn sẽ phải implement rất nhiều thứ chỉ để phục vụ cho những nhu cầu nhỏ</p>
+        <p>Bạn sẽ phải phát minh lại rất nhiều bánh xe :). React là một framework mới và vì vậy việc xử lý sự kiện, giao tiếp giữa các component không theo một chuẩn nào cả. Dó đó bạn sẽ phải build lại các component từ đầu (dropdown, modal, lightboxes ...)</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Bạn có thể render React phía server</h2>
+        <p>Nếu bạn đang xây dựng một website hay một app và chọn con đường là render tất cả các file makrup phía client. Bạn thực sự đã sai lầm. Việc chỉ render phía client lý giải tại sao các website như Soundcloud rất chậm, trong khi đó Stack Overflow (chỉ render phía server)lại rất nhanh. React cho phép bạn làm được điều đó, điều mà bạn nên làm.</p>
+        <p>Angular và các framework khác khuyến khích bạn làm những điều kinh tởm như render các page với PhantomJs nhằm mục đích phục vụ cho các search engine Crawler, hay trả tiền mặt để sử dụng nó như một dịch vụ. Ugh.</p>
+    </div>
+</div>
