@@ -1,4 +1,17 @@
-﻿//-CommentBox
+﻿//LIFECYCLE METHODS
+
+//  componentWillMount – Invoked once, on both client & server before rendering occurs.
+//  componentDidMount – Invoked once, only on the client, after rendering occurs.
+//  shouldComponentUpdate – Return value determines whether component should update.
+//  componentWillUnmount – Invoked prior to unmounting component.
+
+//SPECS
+
+//getInitialState – Return value is the initial value for state.
+//getDefaultProps – Sets fallback props values if props aren’t supplied.
+//mixins – An array of objects, used to extend the current component’s functionality.
+
+//-CommentBox
 //  - CommentList
 //    - Comment
 //    - Comment
@@ -12,6 +25,7 @@ var data = [
 //<CommentList data={this.props.data} />
 // this.props are immutable. They are passed from the parent and are "owned" by the parent.
 // this.state is private to the component and can be changed by calling this.setState()
+
 var CommentBox = React.createClass({
     loadCommentsFromServer: function () {
         var xhr = new XMLHttpRequest();
@@ -22,6 +36,15 @@ var CommentBox = React.createClass({
         }.bind(this);
         xhr.send();
     },
+
+    //loadCommentsFromServer: function () {
+    //    $.getJSON(this.props.url).done(function (result) {
+    //        this.setState({ data: result });
+    //    }).fail(function () {
+    //        alert("error");
+    //    });
+    //},
+
     handleCommentSubmit: function (comment) {
         // submit to the server and refresh the list
         var data = new FormData();
@@ -37,7 +60,7 @@ var CommentBox = React.createClass({
     },
     getInitialState: function () {
         //return { data: [] };
-        return { data: this.props.initialData };
+        return { data: this.props.initialData };// initialData come from Model (return from server at loading time)
     },
     displayName: 'CommentBox',
     // componentWillMount() loads the data from our XMLHttpRequest and assigns it to the data variable.Finally, it sets the data variable in state, using setState().
@@ -148,3 +171,28 @@ var Comment = React.createClass({
 //  React.createElement(CommentBox, null),
 //  document.getElementById('content')
 //);
+
+////////////////////////////////////////////////////////////////////////////
+
+var Counter = React.createClass({
+    incrementCount: function(){
+        this.setState({
+            count: this.state.count + 1
+        });
+    },
+    getInitialState: function(){
+        return {
+            count: 0
+        }
+    },
+    render: function(){
+        return (
+          <div class="my-component">
+            <h1>Count: {this.state.count}</h1>
+            <button type="button" onClick={this.incrementCount}>Increment</button>
+          </div>
+      );
+    }
+});
+
+//ReactDOM.render(<Counter/>, document.getElementById('mount-point'));
